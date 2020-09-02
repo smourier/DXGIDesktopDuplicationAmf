@@ -92,6 +92,7 @@
     </ClCompile>
     <ClCompile Include="DisplayManager.cpp" />
     <ClCompile Include="DuplicationManager.cpp" />
+    <ClCompile Include="EncodingManager.cpp" />
     <ClCompile Include="OutputManager.cpp" />
     <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
@@ -103,6 +104,7 @@
     <ClInclude Include="CommonTypes.h" />
     <ClInclude Include="DisplayManager.h" />
     <ClInclude Include="DuplicationManager.h" />
+    <ClInclude Include="EncodingManager.h" />
     <ClInclude Include="OutputManager.h" />
     <ClInclude Include="ThreadManager.h" />
   </ItemGroup>

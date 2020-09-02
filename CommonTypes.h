@@ -16,6 +16,16 @@
 #include <warning.h>
 #include <DirectXMath.h>
 
+// AMF
+#include "amf/amf/public/common/AMFFactory.h"
+#include "amf/amf/public/include/components/VideoEncoderVCE.h"
+#include "amf/amf/public/include/components/VideoConverter.h"
+#include "amf/amf/public/common/Thread.h"
+#include "amf/amf/public/common/AMFSTL.h"
+#include "amf/amf/public/common/TraceAdapter.h"
+#define FACILITY_AMF 0xA3F
+extern HRESULT HRESULT_FROM_AMF(unsigned long x);
+
 #include "PixelShader.h"
 #include "VertexShader.h"
 

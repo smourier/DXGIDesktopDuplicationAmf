@@ -25,6 +25,9 @@
     <ClCompile Include="AMF\amf\public\common\Windows\ThreadWindows.cpp">
       <Filter>amf</Filter>
     </ClCompile>
+    <ClCompile Include="EncodingManager.cpp">
+      <Filter>encoding</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonTypes.h" />
@@ -44,10 +47,16 @@
     <ClInclude Include="AMF\amf\public\common\Thread.h">
       <Filter>amf</Filter>
     </ClInclude>
+    <ClInclude Include="EncodingManager.h">
+      <Filter>encoding</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="amf">
       <UniqueIdentifier>{a5f4a5b5-0821-4df9-a946-5dac697839be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="encoding">
+      <UniqueIdentifier>{70b13f10-f4c4-4e70-a8c8-f05b6e0529df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "DuplicationManager.h"
 #include "OutputManager.h"
 #include "ThreadManager.h"
+#include "EncodingManager.h"
 
 //
 // Globals
@@ -436,6 +437,7 @@ DWORD WINAPI DDProc(_In_ void* Param)
     // Classes
     DISPLAYMANAGER DispMgr;
     DUPLICATIONMANAGER DuplMgr;
+    ENCODINGMANAGER EncMgr;
 
     // D3D objects
     ID3D11Texture2D* SharedSurf = nullptr;
@@ -497,6 +499,14 @@ DWORD WINAPI DDProc(_In_ void* Param)
     RtlZeroMemory(&DesktopDesc, sizeof(DXGI_OUTPUT_DESC));
     DuplMgr.GetOutputDesc(&DesktopDesc);
 
+    // Make encoding manager
+    hr = HRESULT_FROM_AMF(EncMgr.InitEnc(&TData->DxRes, &DesktopDesc));
+    if (FAILED(hr))
+    {
+        Ret = ProcessFailure(nullptr, L"Failed to init", L"Error", hr);
+        goto Exit;
+    }
+
     // Main duplication loop
     bool WaitToProcessCurrentFrame = false;
     FRAME_DATA CurrentData;
@@ -556,6 +566,16 @@ DWORD WINAPI DDProc(_In_ void* Param)
         Ret = DispMgr.ProcessFrame(&CurrentData, SharedSurf, TData->OffsetX, TData->OffsetY, &DesktopDesc);
         if (Ret != DUPL_RETURN_SUCCESS)
         {
+            DuplMgr.DoneWithFrame();
+            KeyMutex->ReleaseSync(1);
+            break;
+        }
+
+        // Process new frame
+        hr = HRESULT_FROM_AMF(EncMgr.ProcessFrame(&CurrentData, SharedSurf, TData->OffsetX, TData->OffsetY, &DesktopDesc));
+        if (FAILED(hr))
+        {
+            Ret = DUPL_RETURN_ERROR_EXPECTED;
             DuplMgr.DoneWithFrame();
             KeyMutex->ReleaseSync(1);
             break;
