@@ -81,6 +81,11 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AMF\amf\public\common\AMFFactory.cpp" />
+    <ClCompile Include="AMF\amf\public\common\AMFSTL.cpp" />
+    <ClCompile Include="AMF\amf\public\common\Thread.cpp" />
+    <ClCompile Include="AMF\amf\public\common\TraceAdapter.cpp" />
+    <ClCompile Include="AMF\amf\public\common\Windows\ThreadWindows.cpp" />
     <ClCompile Include="DesktopDuplication.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -91,6 +96,10 @@
     <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AMF\amf\public\common\AMFFactory.h" />
+    <ClInclude Include="AMF\amf\public\common\AMFSTL.h" />
+    <ClInclude Include="AMF\amf\public\common\Thread.h" />
+    <ClInclude Include="AMF\amf\public\common\TraceAdapter.h" />
     <ClInclude Include="CommonTypes.h" />
     <ClInclude Include="DisplayManager.h" />
     <ClInclude Include="DuplicationManager.h" />
